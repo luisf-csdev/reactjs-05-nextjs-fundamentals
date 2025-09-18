@@ -1,23 +1,23 @@
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-import { defineConfig } from 'eslint/config';
-import prettierConfig from 'eslint-config-prettier';
-import prettier from 'eslint-plugin-prettier';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import sonarjs from 'eslint-plugin-sonarjs';
-import unicorn from 'eslint-plugin-unicorn';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import { FlatCompat } from '@eslint/eslintrc'
+import js from '@eslint/js'
+import { defineConfig } from 'eslint/config'
+import prettierConfig from 'eslint-config-prettier'
+import prettier from 'eslint-plugin-prettier'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import sonarjs from 'eslint-plugin-sonarjs'
+import unicorn from 'eslint-plugin-unicorn'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-});
+})
 
 export default defineConfig(
   {
@@ -54,7 +54,7 @@ export default defineConfig(
         {
           arrowParens: 'always',
           printWidth: 80,
-          semi: true,
+          semi: false,
           singleQuote: true,
           tabWidth: 2,
           trailingComma: 'all',
@@ -64,4 +64,4 @@ export default defineConfig(
     },
   },
   { ignores: ['**/node_modules/', '**/dist/', '**/.next/', 'next-env.d.ts'] },
-);
+)
