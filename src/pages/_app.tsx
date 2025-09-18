@@ -8,7 +8,7 @@ import logoImg from '../assets/logo.svg'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className="flex min-h-svh flex-col items-start justify-center">
-      <header className="mx-auto w-full max-w-[1180] pt-8">
+      <header className="mx-auto mb-8 w-full max-w-[1180px] pt-8">
         <Image priority src={logoImg} width={130} alt="" />
       </header>
 

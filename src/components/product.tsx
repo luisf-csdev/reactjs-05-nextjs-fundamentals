@@ -1,13 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ComponentProps } from 'react'
 
-import tee from '../assets/logo.svg'
+import tee from '@/assets/logo.svg'
+import { cn } from '@/lib/utils/shadcn'
 
-export function Product() {
+type ProductProps = ComponentProps<'a'>
+
+export function Product({ className, ...props }: ProductProps) {
   return (
     <Link
-      className="group relative flex cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] p-1"
+      className={cn(
+        'group relative flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] p-1',
+        className,
+      )}
       href="#"
+      {...props}
     >
       <Image
         priority
