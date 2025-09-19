@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next'
+import Head from 'next/head'
 import type Stripe from 'stripe'
 
 import {
@@ -49,16 +50,22 @@ type HomeProps = {
 
 export default function Home({ products }: HomeProps) {
   return (
-    <div className="w-full max-w-full overflow-hidden">
-      <Carousel className="max-w-[calc(100vw-((100vw-1180px)/2)))] ml-auto flex min-h-[656px] w-full *:overflow-visible">
-        <CarouselContent className="ml-0 h-full w-[696px] max-w-full gap-12">
-          {products.map((product) => (
-            <CarouselItem className="pl-0" key={product.id}>
-              <ProductLink product={product} className="h-full" />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
-    </div>
+    <>
+      <Head>
+        <title>Home | Ignite Shop</title>
+      </Head>
+
+      <div className="w-full max-w-full overflow-hidden">
+        <Carousel className="max-w-[calc(100vw-((100vw-1180px)/2)))] ml-auto flex min-h-[656px] w-full *:overflow-visible">
+          <CarouselContent className="ml-0 h-full w-[696px] max-w-full gap-12">
+            {products.map((product) => (
+              <CarouselItem className="pl-0" key={product.id}>
+                <ProductLink product={product} className="h-full" />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+    </>
   )
 }
