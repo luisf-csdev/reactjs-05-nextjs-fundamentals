@@ -9,13 +9,14 @@ type ProductProps = ComponentProps<'a'> & {
     id: string
     name: string
     imageUrl: string
-    price: number
+    price: string
   }
 }
 
-export function Product({ className, product, ...props }: ProductProps) {
+export function ProductLink({ className, product, ...props }: ProductProps) {
   return (
     <Link
+      prefetch={false}
       className={cn(
         'group relative flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] p-1',
         className,

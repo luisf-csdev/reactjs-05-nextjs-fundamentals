@@ -8,7 +8,9 @@ import {
 } from '@/components/ui/carousel'
 import { stripe } from '@/lib/stripe'
 
-import { Product } from '../components/product'
+import { ProductLink } from '../components/product-link'
+
+const TWO_HOURS_IN_SECONDS = 60 * 60 * 2
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
@@ -28,8 +30,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
-  const TWO_HOURS_IN_SECONDS = 60 * 60 * 2
-
   return {
     props: {
       products,
@@ -43,7 +43,7 @@ type HomeProps = {
     id: string
     name: string
     imageUrl: string
-    price: number
+    price: string
   }[]
 }
 
@@ -54,7 +54,7 @@ export default function Home({ products }: HomeProps) {
         <CarouselContent className="ml-0 h-full w-[696px] max-w-full gap-12">
           {products.map((product) => (
             <CarouselItem className="pl-0" key={product.id}>
-              <Product product={product} className="h-full" />
+              <ProductLink product={product} className="h-full" />
             </CarouselItem>
           ))}
         </CarouselContent>
